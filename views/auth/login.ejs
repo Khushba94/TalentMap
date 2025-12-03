@@ -1,0 +1,23 @@
+<%- include('../layouts/header') %>
+<h2>Login</h2>
+<form action="/auth/login" method="POST" class="form-card">
+<label>Email</label>
+<input type="email" name="email" required />
+
+
+<label>Password</label>
+<input type="password" name="password" required />
+
+
+<% if (typeof error !== 'undefined') { %>
+<p class="error"><%= error %></p>
+<% } %>
+
+
+<button class="btn">Login</button>
+</form>
+</main>
+</body>
+</html>
+
+
