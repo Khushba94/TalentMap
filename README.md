@@ -1,2 +1,2 @@
 # TalentMap
-Connecting talent to suitable opportunity with AI‑driven career matching.
+TalentMap is a web-based platform that streamlines career matching by automating resume analysis and job recommendations. Students can upload resumes, which are compared against available listings to suggest the most suitable roles or add profiles to a waitlist for future matches. The system also includes an Automated Job Agreement Generator that extracts details from offer letters to auto-fill job agreements, reducing manual effort and errors. TalentMap helps create a faster, fairer, and more efficient connection between students, employers, and recruitment agencies.
