@@ -1,0 +1,17 @@
+<%- include('../layouts/header') %>
+<h2>Upload Resume</h2>
+<form action="/resume/upload" method="POST" enctype="multipart/form-data" class="form-card">
+<label>Select File (PDF/DOCX)</label>
+<input type="file" name="resume" required />
+
+
+<% if (typeof error !== 'undefined') { %>
+<p class="error"><%= error %></p>
+<% } %>
+
+
+<button class="btn">Upload</button>
+</form>
+</main>
+</body>
+</html>

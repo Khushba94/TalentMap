@@ -36,9 +36,11 @@ app.use((req, res, next) => {
 // Routes
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
+const resumeRouter = require('./routes/resume');
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
+app.use('/resume', resumeRouter);
 
 // Start server
 app.listen(PORT, () => {
