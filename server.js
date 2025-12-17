@@ -37,10 +37,12 @@ app.use((req, res, next) => {
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const resumeRouter = require('./routes/resume');
+const jobRouter = require('./routes/job');
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/resume', resumeRouter);
+app.use('/jobs', jobRouter);
 
 // Start server
 app.listen(PORT, () => {

@@ -1,19 +1,18 @@
 <%- include('layouts/header', { user: user }) %>
-
-
 <h1>Welcome to TalentMap</h1>
 <p>Your resume-to-job matching platform.</p>
 
-
 <% if (user) { %>
-<a class="btn" href="/resume/upload">Upload Resume</a>
-<a class="btn" href="">View Jobs</a>
+    <a class="btn" href="/resume/upload">Upload Resume</a>
+    <% if (user.role === 'recruiter') { %>
+        <a class="btn" href="/jobs/create">Create Jobs</a>
+    <% } else if (user.role === 'student') { %>
+        <a class="btn" href="/jobs/list">View Jobs</a>
+    <% } %>
 <% } else { %>
-<a class="btn" href="/auth/login">Login</a>
-<a class="btn" href="/auth/register">Register</a>
+    <a class="btn" href="/auth/login">Login</a>
+    <a class="btn" href="/auth/register">Register</a>
 <% } %>
-
-
 </main>
 </body>
 </html>
