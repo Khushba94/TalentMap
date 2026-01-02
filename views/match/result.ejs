@@ -1,0 +1,70 @@
+<%- include('../layouts/header', { user: user }) %>
+
+<div class="container">
+  <h2>Match Results for <%= resume.candidate_name || ('Resume #' + resume.id) %></h2>
+
+  <% if (!results.length) { %>
+    <p>No matches found.</p>
+  <% } else { %>
+
+    <div class="results-list">
+      <% results.forEach(r => { %>
+        <div class="result-card">
+          <h3><%= r.job.title %></h3>
+          <p><strong>Location:</strong> <%= r.job.location %></p>
+          <p><strong>Description:</strong> <%= r.job.description %></p>
+
+          <div class="score-section">
+            <span class="score-label">Match Score: <%= r.score %>%</span>
+            <div class="score-bar">
+              <div class="score-bar-fill" style="width:<%= r.score %>%"></div>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+
+  <% } %>
+</div>
+
+<style>
+  .container {
+    max-width: 900px;
+    margin: 30px auto;
+  }
+
+  .results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .result-card {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+  }
+
+  .score-section {
+    margin-top: 10px;
+  }
+
+  .score-label {
+    font-weight: bold;
+  }
+
+  .score-bar {
+    width: 100%;
+    height: 10px;
+    background: #eee;
+    border-radius: 5px;
+    margin-top: 5px;
+    overflow: hidden;
+  }
+
+  .score-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4caf50, #2196f3);
+  }
+</style>

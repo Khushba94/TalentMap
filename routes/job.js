@@ -29,5 +29,22 @@ res.render('jobs/list', { jobs, user: req.session.user });
 } catch (err) { console.error(err); res.sendStatus(500); }
 });
 
+router.get('/details/:id', async (req, res) => {
+  const jobId = req.params.id;
+
+  const [[job]] = await db.query('SELECT * FROM jobs WHERE id = ?', [jobId]);
+  if (!job) return res.status(404).send('Job not found');
+
+  const [[recruiter]] = await db.query(
+    'SELECT name FROM users WHERE id = ?',
+    [job.recruiter_id]
+  );
+
+  res.render('jobs/details', {
+    job,
+    recruiter,
+    user: req.session.user || null
+  });
+});
 
 module.exports = router;

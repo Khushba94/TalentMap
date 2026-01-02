@@ -12,7 +12,12 @@
 <ul>
 <% if (user) { %>
 <li><a href="/resume/upload">Upload Resume</a></li>
-<li><a href="">Jobs</a></li>
+    <% if (user && user.role === 'recruiter') { %>
+    <li><a href="/jobs/create">Jobs</a></li>
+    <li><a href="/match/history">Match History</a></li>
+    <% } else { %>
+    <li><a href="/jobs/list">Jobs</a></li>
+    <% } %>
 <li><a href="/auth/logout">Logout</a></li>
 <% } else { %>
 <li><a href="/auth/login">Login</a></li>

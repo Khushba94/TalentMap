@@ -38,11 +38,13 @@ const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth');
 const resumeRouter = require('./routes/resume');
 const jobRouter = require('./routes/job');
+const matchRouter = require('./routes/match');
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/resume', resumeRouter);
 app.use('/jobs', jobRouter);
+app.use('/match', matchRouter);
 
 // Start server
 app.listen(PORT, () => {
