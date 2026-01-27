@@ -1,0 +1,74 @@
+body {
+    background: linear-gradient(135deg, #eef2f3, #dfe9f3);
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .login-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .form-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .form-card h2 {
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .form-card label {
+    font-weight: 500;
+    margin-top: 1rem;
+  }
+
+  .form-card input {
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 0.6rem;
+    width: 100%;
+  }
+
+  .form-card .btn {
+    margin-top: 1rem;
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .error {
+    color: #d9534f;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  footer {
+    background: rgba(255,255,255,0.4);
+    backdrop-filter: blur(6px);
+    border-top: 1px solid #ddd;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  footer a {
+    text-decoration: none;
+    margin: 0 0.5rem;
+    color: #2563EB;
+  }
+
+  footer p {
+    margin-bottom: 0.3rem;
+  }

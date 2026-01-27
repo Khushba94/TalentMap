@@ -39,12 +39,17 @@ const authRouter = require('./routes/auth');
 const resumeRouter = require('./routes/resume');
 const jobRouter = require('./routes/job');
 const matchRouter = require('./routes/match');
+const offerRoutes = require('./routes/offer'); 
+const agreementRoutes = require('./routes/agreement');
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/resume', resumeRouter);
 app.use('/jobs', jobRouter);
 app.use('/match', matchRouter);
+app.use('/offer', offerRoutes); 
+app.use('/agreement', agreementRoutes);
+app.use('/generated', express.static(path.join(__dirname, 'generated')));
 
 // Start server
 app.listen(PORT, () => {

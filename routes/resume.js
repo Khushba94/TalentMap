@@ -5,22 +5,11 @@ const fs = require('fs');
 const pdfParse = require('pdf-parse');
 const db = require('../config/db');
 const { htmlToText } = require('html-to-text');
-const multer = require('multer');  // ✅ import multer
+const upload = require('../config/multer');
 
 // Ensure upload directory exists
 const UPLOAD_DIR = process.env.UPLOAD_DIR || path.join(__dirname, '..', 'uploads');
 if (!fs.existsSync(UPLOAD_DIR)) fs.mkdirSync(UPLOAD_DIR, { recursive: true });
-
-// Configure multer storage
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, UPLOAD_DIR);
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname.replace(/\s+/g, '_'));
-  }
-});
-const upload = multer({ storage });
 
 // GET route to show upload form
 router.get('/upload', (req, res) => {

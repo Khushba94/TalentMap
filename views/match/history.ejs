@@ -1,23 +1,22 @@
 <%- include('../layouts/header', { user: user }) %>
+<link rel="stylesheet" href="/css/style.css">
 
 <div class="container">
-  <h2>Your Match History</h2>
+  <h2>Matched Candidates</h2>
 
   <% if (!matches.length) { %>
-    <p>No match history available yet.</p>
+    <p>No matches yet.</p>
   <% } else { %>
-
-    <table class="history-table">
+    <table border="1" cellpadding="8" cellspacing="0">
       <thead>
         <tr>
           <th>Job Title</th>
           <th>Candidate</th>
           <th>Location</th>
-          <th>Match Score</th>
+          <th>Score</th>
           <th>Date</th>
         </tr>
       </thead>
-
       <tbody>
         <% matches.forEach(m => { %>
           <tr>
@@ -25,35 +24,16 @@
             <td><%= m.candidate_name || ('Resume #' + m.resume_id) %></td>
             <td><%= m.location %></td>
             <td><%= m.score %>%</td>
-            <td><%= m.created_at ? m.created_at.toLocaleString() : '' %></td>
+            <td><%= m.created_at %></td>
           </tr>
         <% }) %>
       </tbody>
     </table>
-
   <% } %>
 </div>
 
-<style>
-  .container {
-    max-width: 900px;
-    margin: 30px auto;
-  }
+</main>
+</body>
+</html>
 
-  .history-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-
-  .history-table th,
-  .history-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-  }
-
-  .history-table th {
-    background: #f5f5f5;
-    text-align: left;
-  }
-</style>
+<%- include('../layouts/footer') %>

@@ -4,27 +4,26 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="/css/style.css" />
-<title>TalentMap</title>
+  <title>TalentMap</title>
 </head>
 <body>
-<nav class="navbar">
-<a href="/" class="brand">TalentMap</a>
+    <nav class="navbar">
+        <a href="/" class="brand">TalentMap</a>
 <ul>
-<% if (user) { %>
-<li><a href="/resume/upload">Upload Resume</a></li>
+  <% if (user) { %>
     <% if (user && user.role === 'recruiter') { %>
-    <li><a href="/jobs/create">Jobs</a></li>
+    <li><a href="/jobs/create">Create Jobs</a></li>
     <li><a href="/match/history">Match History</a></li>
-    <% } else { %>
+  <% } else { %>
+    <li><a href="/resume/upload">Upload Resume</a></li>
     <li><a href="/jobs/list">Jobs</a></li>
     <% } %>
 <li><a href="/auth/logout">Logout</a></li>
 <% } else { %>
 <li><a href="/auth/login">Login</a></li>
 <li><a href="/auth/register">Register</a></li>
-<% } %>
+  <% } %>
 </ul>
-</nav>
-
+    </nav>
 
 <main>

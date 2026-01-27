@@ -1,0 +1,15 @@
+<%- include('../layouts/header', { user: user }) %>
+
+<div class="container">
+  <h2>Upload Offer Letter</h2>
+
+  <form action="/offer/upload" method="POST" enctype="multipart/form-data">
+    <label>Offer Letter (PDF/DOCX)</label><br>
+    <input type="file" name="offer_letter" required><br><br>
+    <button type="submit" class="btn">Upload</button>
+  </form>
+</div>
+
+</main>
+</body>
+</html>

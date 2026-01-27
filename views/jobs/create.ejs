@@ -1,29 +1,25 @@
-<%- include('../layouts/header') %>
-<h2>Create Job Posting</h2>
-<form action="/jobs/create" method="POST" class="form-card">
-<label>Job Title</label>
-<input type="text" name="title" required />
+<%- include('../layouts/header', { user: user }) %>
 
+<div class="container">
+  <h2>Create Job</h2>
 
-<label>Description</label>
-<textarea name="description" required></textarea>
+  <form action="/jobs/create" method="POST">
+    <label>Title</label><br>
+    <input type="text" name="title" required><br><br>
 
+    <label>Description</label><br>
+    <textarea name="description" rows="4"></textarea><br><br>
 
-<label>Requirements</label>
-<textarea name="requirements" required></textarea>
+    <label>Requirements</label><br>
+    <textarea name="requirements" rows="4"></textarea><br><br>
 
+    <label>Location</label><br>
+    <input type="text" name="location"><br><br>
 
-<label>Location</label>
-<input type="text" name="location" required />
+    <button type="submit" class="btn">Create</button>
+  </form>
+</div>
 
-
-<% if (typeof error !== 'undefined') { %>
-<p class="error"><%= error %></p>
-<% } %>
-
-
-<button class="btn">Post Job</button>
-</form>
 </main>
 </body>
 </html>

@@ -2,33 +2,39 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
 
-
-router.get('/create', (req,res) => {
-console.log("Session user:", req.session.user);
-if (!req.session.user || req.session.user.role !== 'recruiter') return res.redirect('/auth/login');
-res.render('jobs/create');
+// GET create job form
+router.get('/create', (req, res) => {
+  const user = req.session.user;
+  if (!user || user.role !== 'recruiter') {
+    return res.redirect('/auth/login');
+  }
+  res.render('jobs/create');
 });
 
-router.post('/create', async (req,res) => {
-if (!req.session.user || req.session.user.role !== 'recruiter') return res.redirect('/auth/login');
-const { title, description, requirements, location } = req.body;
-try {
-await db.query('INSERT INTO jobs (recruiter_id, title, description, requirements, location) VALUES (?, ?, ?, ?, ?)', [req.session.user.id, title, description, requirements, location]);
-res.redirect('/jobs/list');
-} catch (err) {
-console.error(err);
-res.render('jobs/create', { error: 'Failed to create job' });
-}
+// POST create job
+router.post('/create', async (req, res) => {
+  const user = req.session.user;
+  if (!user || user.role !== 'recruiter') {
+    return res.status(403).send('Access denied');
+  }
+
+  const { title, description, requirements, location } = req.body;
+
+  await db.query(
+    'INSERT INTO jobs (recruiter_id, title, description, requirements, location) VALUES (?, ?, ?, ?, ?)',
+    [user.id, title, description, requirements, location]
+  );
+
+  res.redirect('/jobs/list');
 });
 
-
-router.get('/list', async (req,res) => {
-try {
-const [jobs] = await db.query('SELECT j.*, u.name as recruiter_name FROM jobs j LEFT JOIN users u ON u.id=j.recruiter_id ORDER BY j.created_at DESC');
-res.render('jobs/list', { jobs, user: req.session.user });
-} catch (err) { console.error(err); res.sendStatus(500); }
+// List all jobs
+router.get('/list', async (req, res) => {
+  const [jobs] = await db.query('SELECT * FROM jobs ORDER BY created_at DESC');
+  res.render('jobs/list', { jobs });
 });
 
+// Job details
 router.get('/details/:id', async (req, res) => {
   const jobId = req.params.id;
 
@@ -42,8 +48,7 @@ router.get('/details/:id', async (req, res) => {
 
   res.render('jobs/details', {
     job,
-    recruiter,
-    user: req.session.user || null
+    recruiter: recruiter || { name: 'Unknown' }
   });
 });
 

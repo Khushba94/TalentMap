@@ -1,49 +1,22 @@
 <%- include('../layouts/header', { user: user }) %>
 
-<div class="container">
-  <h2>No Matches Found</h2>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-  <div class="nomatch-box">
-    <p>
-      We couldn’t find any suitable job matches for 
-      <strong><%= resume.candidate_name || ('Resume #' + resume.id) %></strong> at this time.
-    </p>
+<main class="container py-5 text-center">
+  <h2 class="mb-3"><i class="fas fa-circle-xmark text-danger me-2"></i>No Matches Found</h2>
 
-    <p>
-      The resume has been added to the waitlist. Our system will automatically re-check 
-      when new jobs are posted.
-    </p>
+  <p class="lead">
+    We couldn’t find any suitable job matches for 
+    <strong><%= resume.candidate_name || ('Resume #' + resume.id) %></strong> at this time.
+  </p>
 
-    <a href="/jobs/list" class="btn">View Available Jobs</a>
-  </div>
-</div>
+  <p class="text-muted mb-4">
+    The resume has been added to the waitlist for future opportunities.
+  </p>
 
-<style>
-  .container {
-    max-width: 700px;
-    margin: 40px auto;
-    text-align: center;
-  }
+  <a class="btn btn-primary" href="/jobs/list">
+    <i class="fas fa-briefcase me-2"></i> View Available Jobs
+  </a>
+</main>
 
-  .nomatch-box {
-    padding: 25px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background: #fafafa;
-    margin-top: 20px;
-  }
-
-  .btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 18px;
-    background: #2196f3;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-
-  .btn:hover {
-    background: #1976d2;
-  }
-</style>
+<%- include('../layouts/footer') %>

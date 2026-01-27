@@ -1,18 +1,22 @@
-<%- include('../layouts/header') %>
-<h2>Available Jobs</h2>
-<ul class="job-list">
-<% jobs.forEach(job => { %>
-<li class="job-card">
-<h3><%= job.title %></h3>
-<p><%= job.description %></p>
-<p><b>Requirements:</b> <%= job.requirements %></p>
-<p><b>Location:</b> <%= job.location %></p>
-<% if (user && user.role === 'student') { %>
-<a class="btn" href="/match/run/<%= job.id %>">Match this job</a>
-<% } %>
-</li>
-<% }) %>
-</ul>
+<%- include('../layouts/header', { user: user }) %>
+
+<div class="container">
+  <h2>Job Listings</h2>
+
+  <% if (!jobs.length) { %>
+    <p>No jobs available yet.</p>
+  <% } else { %>
+    <ul>
+      <% jobs.forEach(j => { %>
+        <li>
+          <strong><a href="/jobs/details/<%= j.id %>"><%= j.title %></a></strong>
+          — <%= j.location %>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
+</div>
+
 </main>
 </body>
 </html>
