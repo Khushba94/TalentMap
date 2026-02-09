@@ -1,7 +1,56 @@
 <%- include('../layouts/header') %>
-<h2>Success!</h2>
-<p><%= message %></p>
-<a href="/">Go Home</a>
-</main>
-</body>
-</html>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+
+      <div class="card job-card shadow-sm border-0 text-center">
+        <div class="card-body py-5">
+
+          <!-- Icon + Title -->
+          <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
+          <h2 class="text-orange mb-3">Success!</h2>
+
+          <!-- Message -->
+          <p class="text-dark mb-4"><%= message %></p>
+
+          <!-- Button -->
+          <a href="/" class="btn btn-orange btn-lg">
+            <i class="fas fa-home me-1"></i>Go Home
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<%- include('../layouts/footer') %>
+
+<style>
+  .text-orange {
+    color: #f97316;
+  }
+
+  .btn-orange {
+    background-color: #f97316;
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-orange:hover {
+    background-color: #ea580c;
+  }
+
+  .job-card {
+    background: #fff7ed;
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .text-dark {
+    color: #333 !important;
+  }
+</style>

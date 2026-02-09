@@ -1,0 +1,91 @@
+<%- include('../layouts/header', { user: user }) %>
+
+<div class="container my-5">
+  <div class="card job-card shadow-sm border-0">
+    <div class="card-body">
+        <!-- Back Button -->
+    <div class="mb-4">
+    <a href="/jobs/list" class="btn btn-outline-secondary">
+        <i class="fas fa-arrow-left me-1"></i>Back to Listings
+    </a>
+    </div>
+      <h2 class="text-center text-orange mb-4">
+        <i class="fas fa-edit me-2"></i>Edit Job
+      </h2>
+
+      <form action="/jobs/edit/<%= job.id %>" method="POST">
+
+        <!-- Title -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Job Title</label>
+          <input type="text" class="form-control" name="title" value="<%= job.title %>" required>
+        </div>
+
+        <!-- Location -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Location</label>
+          <input type="text" class="form-control" name="location" value="<%= job.location %>" required>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Description</label>
+          <textarea class="form-control" name="description" rows="4" required><%= job.description %></textarea>
+        </div>
+
+        <!-- Requirements -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Requirements</label>
+          <textarea class="form-control" name="requirements" rows="3" required><%= job.requirements %></textarea>
+        </div>
+
+        <div class="text-end">
+          <button type="submit" class="btn btn-orange">
+            <i class="fas fa-save me-1"></i>Save
+          </button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<%- include('../layouts/footer') %>
+<style>
+  .text-orange {
+    color: #f97316;
+  }
+
+  .btn-orange {
+    background-color: #f97316;
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-orange:hover {
+    background-color: #ea580c;
+  }
+
+  .job-card {
+    max-width: 760px;
+    margin: 0 auto;
+    background: #fff7ed;
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .form-label {
+    color: #444;
+  }
+
+  .form-control {
+    border-radius: 8px;
+  }
+
+  .form-text {
+    font-size: 0.85rem;
+    color: #666;
+  }
+</style>

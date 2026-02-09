@@ -1,20 +1,97 @@
 <%- include('../layouts/header', { user: user }) %>
 
-<div class="container">
-  <h2><%= job.title %></h2>
+<div class="container my-5">
+  <div class="card job-card shadow-sm border-0">
+    <div class="card-body">
 
-  <p><strong>Location:</strong> <%= job.location %></p>
-  <p><strong>Description:</strong></p>
-  <p><%= job.description %></p>
+      <!-- Back Button -->
+      <div class="mb-3 text-start">
+        <a href="/jobs/list" class="btn btn-outline-orange">
+          <i class="fas fa-arrow-left me-1"></i> Back to Job List
+        </a>
+      </div>
 
-  <p><strong>Requirements:</strong></p>
-  <p><%= job.requirements %></p>
+      <!-- Title -->
+      <h2 class="text-center text-orange mb-2">
+        <i class="fas fa-briefcase me-2"></i><%= job.title %>
+      </h2>
 
-  <p><strong>Posted By:</strong> <%= recruiter.name %></p>
+      <!-- Location -->
+      <p class="text-center mb-4">
+        <strong><i class="fas fa-location-dot me-1"></i> Location:</strong>
+        <span class="text-muted"><%= job.location %></span>
+      </p>
 
-  <a class="btn" href="/jobs/list">Back to Job List</a>
+      <!-- Description -->
+      <h5 class="section-heading"><i class="fas fa-align-left me-2"></i>Description</h5>
+      <ul class="list-group list-group-flush mb-4">
+        <% job.description.split(/\r?\n/).forEach(item => { %>
+          <% if (item.trim()) { %>
+            <li class="list-group-item justify-text"><%= item.trim() %></li>
+          <% } %>
+        <% }) %>
+      </ul>
+
+      <!-- Requirements -->
+      <h5 class="section-heading"><i class="fas fa-list-check me-2"></i>Requirements</h5>
+      <ul class="list-group list-group-flush mb-4">
+        <% job.requirements.split(/,\s*/).forEach(req => { %>
+          <% if (req.trim()) { %>
+            <li class="list-group-item justify-text"><%= req.trim() %></li>
+          <% } %>
+        <% }) %>
+      </ul>
+
+      <!-- Recruiter -->
+      <p class="text-center">
+        <strong><i class="fas fa-user me-1"></i> Posted By:</strong>
+        <span class="text-muted"><%= recruiter.name %></span>
+      </p>
+
+    </div>
+  </div>
 </div>
 
-</main>
-</body>
-</html>
+<%- include('../layouts/footer') %>
+
+<style>
+  .text-orange {
+    color: #f97316;
+  }
+
+  .btn-outline-orange {
+    border-color: #f97316;
+    color: #f97316;
+  }
+
+  .btn-outline-orange:hover {
+    background-color: #f97316;
+    color: #fff;
+  }
+
+  .job-card {
+    max-width: 760px;
+    margin: 0 auto;
+    background: #fff7ed; /* Light orange tint */
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  .section-heading {
+    color: #f97316;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .list-group-item {
+    border: none;
+    background: transparent;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: justify;
+  }
+
+  .justify-text {
+    text-align: justify;
+  }
+</style>

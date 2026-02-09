@@ -13,7 +13,7 @@ align-items: center;
 .navbar ul { list-style: none; display: flex; gap: 20px; }
 .navbar a { color: #fff; text-decoration: none; }
 
-.container { padding: 20px; min-height: 68vh;}
+.container { padding: 20px; min-height: 63vh;}
 
 .form-card {
 background: #fff;
@@ -47,6 +47,7 @@ text-decoration: none;
   display: flex;
   align-items: center;
   padding: 2rem 1rem;
+  min-height: 68vh;
 }
 
 /* Floating animation */
@@ -89,6 +90,15 @@ text-decoration: none;
     align-items: center;
     justify-content: center;
     padding: 2rem;
+    min-height: 69vh;
+}
+
+.create-job{
+    background-image: url('/images/job_img.jpg');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
 }
 
 /* Responsive Fixes */

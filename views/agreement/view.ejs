@@ -1,15 +1,75 @@
 <%- include('../layouts/header', { user: user }) %>
 
-<div class="container">
-  <h2>Generated Job Agreement</h2>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10">
 
-  <pre style="background:#fafafa;padding:20px;border:1px solid #ddd;white-space:pre-wrap;">
-<%= agreement %>
-  </pre>
+      <div class="card job-card shadow-sm border-0">
+        <div class="card-body">
 
-  <a class="btn" href="/">Back to Home</a>
+          <!-- Header -->
+          <div class="text-center mb-4">
+            <i class="fas fa-file-contract fa-2x text-orange mb-3"></i>
+            <h2 class="text-orange">Generated Job Agreement</h2>
+            <p class="text-muted">Your agreement has been generated successfully.</p>
+          </div>
+
+          <!-- Agreement Content -->
+          <div class="agreement-box mb-4">
+            <pre class="agreement-text"><%= agreement %></pre>
+          </div>
+
+          <!-- Back Button -->
+          <div class="text-end">
+            <a href="/" class="btn btn-orange btn-lg">
+              <i class="fas fa-home me-1"></i>Back to Home
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
 
-</main>
-</body>
-</html>
+<%- include('../layouts/footer') %>
+
+<style>
+  .text-orange {
+    color: #f97316;
+  }
+
+  .btn-orange {
+    background-color: #f97316;
+    color: #fff;
+    border: none;
+    transition: 0.3s ease;
+  }
+
+  .btn-orange:hover {
+    background-color: #ea580c;
+  }
+
+  .job-card {
+    background: #fff7ed;
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .agreement-box {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+  }
+
+  .agreement-text {
+    white-space: pre-wrap;
+    margin: 0;
+    font-family: "Courier New", monospace;
+    color: #333;
+  }
+</style>

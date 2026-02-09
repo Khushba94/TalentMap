@@ -1,8 +1,37 @@
-<footer>
-  <p><strong>TalentMap</strong> © <%= new Date().getFullYear() %></p>
-  <p>Designed & Developed by Khushba Ahmed</p>
-  <p>
-    <a href="https://github.com/your-github" target="_blank">GitHub</a> •
-    <a href="https://www.linkedin.com/in/your-linkedin" target="_blank">LinkedIn</a>
+<footer class="footer-orange text-center py-4 mt-auto">
+  <p class="mb-1 fw-semibold text-white">
+    <strong>TalentMap</strong> © <%= new Date().getFullYear() %>
   </p>
+
+  <p class="mb-1 text-white-50">Designed & Developed by Khushba Ahmed</p>
+
+  <div class="d-flex justify-content-center gap-3">
+    <a href="https://github.com/your-github" target="_blank" class="footer-link">
+      <i class="fab fa-github me-1"></i> GitHub
+    </a>
+    <a href="https://www.linkedin.com/in/your-linkedin" target="_blank" class="footer-link">
+      <i class="fab fa-linkedin me-1"></i> LinkedIn
+    </a>
+  </div>
 </footer>
+
+<style>
+  .footer-orange {
+    background-color: #f97316;
+    color: #fff;
+    padding: 1.5rem 0;
+    box-shadow: 0 -2px 6px rgba(0,0,0,0.08);
+  }
+
+  .footer-link {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .footer-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+</style>
