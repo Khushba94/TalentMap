@@ -33,9 +33,10 @@ router.post('/upload', upload.single('resume'), async (req, res) => {
       text = `Uploaded file: ${file.originalname}`;
     }
 
+    const relativePath = `uploads/resumes/${file.filename}`;
     await db.query(
       'INSERT INTO resumes (user_id, filename, filepath, text) VALUES (?, ?, ?, ?)',
-      [req.session.user.id, file.filename, file.path, text]
+      [req.session.user.id, file.filename, relativePath, text]
     );
 
     res.render('resume/success', { message: 'Resume uploaded and parsed' });
@@ -43,6 +44,26 @@ router.post('/upload', upload.single('resume'), async (req, res) => {
     console.error(err);
     res.render('resume/upload', { error: 'Failed to process resume' });
   }
+});
+
+//download
+router.get('/download/:id', async (req, res) => {
+  const resumeId = req.params.id;
+
+  const [[resume]] = await db.query(
+    "SELECT * FROM resumes WHERE id = ?",
+    [resumeId]
+  );
+
+  if (!resume) return res.status(404).send("Resume not found");
+
+  const filePath = path.join(__dirname, "..", resume.filepath);
+
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).send("File missing on server");
+  }
+
+  res.download(filePath, resume.filename);
 });
 
 module.exports = router;

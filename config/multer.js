@@ -1,5 +1,6 @@
 const multer = require('multer');
 const path = require('path');
+const fs = require('fs');
 
 // Dynamic storage based on field name
 const storage = multer.diskStorage({
@@ -12,6 +13,9 @@ const storage = multer.diskStorage({
       folder = 'uploads/offerletters';
     }
 
+    if (!fs.existsSync(folder)) {
+      fs.mkdirSync(folder, { recursive: true });
+    }
     cb(null, folder);
   },
 

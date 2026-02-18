@@ -40,6 +40,7 @@ const resumeRouter = require('./routes/resume');
 const jobRouter = require('./routes/job');
 const offerRoutes = require('./routes/offer'); 
 const agreementRoutes = require('./routes/agreement');
+const recruiterRoutes = require('./routes/recruiter');
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
@@ -47,7 +48,9 @@ app.use('/resume', resumeRouter);
 app.use('/jobs', jobRouter);
 app.use('/offer', offerRoutes); 
 app.use('/agreement', agreementRoutes);
+app.use('/recruiter', recruiterRoutes);
 app.use('/generated', express.static(path.join(__dirname, 'generated')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Start server
 app.listen(PORT, () => {

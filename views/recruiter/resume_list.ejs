@@ -1,0 +1,97 @@
+<%- include('../layouts/header', { user: user }) %>
+
+<style>
+  body {
+    background: #f5f5f5; /* same as job list page */
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .resume-list-wrapper {
+    width: 100%;
+    max-width: 600px; /* same centered width as job list */
+  }
+
+  .resume-card {
+    background: #fff7ed; /* EXACT same color as job cards */
+    border-radius: 10px; /* same radius */
+    padding: 1.2rem; /* same padding */
+  }
+
+  .label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 0.15rem;
+  }
+
+  .value {
+    font-size: 1rem;
+    margin-bottom: 0.7rem;
+    color: #333;
+  }
+
+  .preview-box {
+    background: #fff;
+    border-radius: 8px;
+    padding: 0.75rem;
+    max-height: 140px;
+    overflow-y: auto;
+    font-size: 0.9rem;
+    border: 1px solid #e5e5e5;
+    margin-bottom: 1rem;
+  }
+
+  .download-btn {
+    border-color: #f97316;
+    color: #f97316;
+  }
+
+  .download-btn:hover {
+    background-color: #f97316;
+    color: #fff;
+  }
+
+  .text-orange {
+    color: #f97316;
+  }
+</style>
+
+<div class="d-flex justify-content-center mt-4">
+  <div class="resume-list-wrapper">
+
+    <h3 class="text-center mb-4 fw-bold text-orange">Uploaded Resumes</h3>
+
+    <div class="list-group">
+
+      <% resumes.forEach(r => { %>
+        <div class="list-group-item resume-card mb-3 shadow-sm">
+
+          <div class="label">Student Name</div>
+          <div class="value"><%= r.student_name %></div>
+
+          <div class="label">Email</div>
+          <div class="value"><%= r.student_email %></div>
+
+          <div class="label">Filename</div>
+          <div class="value"><%= r.filename %></div>
+
+          <div class="label">Preview</div>
+          <div class="preview-box">
+            <%= r.text.substring(0, 500) %>...
+          </div>
+
+          <a class="btn btn-outline-orange btn-sm download-btn"
+             href="/resume/download/<%= r.id %>"
+             download>
+            <i class="fas fa-download me-1"></i> Download
+          </a>
+
+        </div>
+      <% }) %>
+
+    </div>
+
+  </div>
+</div>
+
+<%- include('../layouts/footer') %>
