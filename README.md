@@ -43,10 +43,12 @@ TalentMap/
    cd TalentMap
    
 2. **Install dependencies**
+   ```bash
    npm install
 
-3. **Configure environment variables**
+4. **Configure environment variables**
   Create a .env file in the root directory:
+   ```bash
     DB_HOST=localhost
     DB_USER=root
     DB_PASSWORD=yourpassword
@@ -55,18 +57,21 @@ TalentMap/
     UPLOAD_DIR=uploads
     PORT=3000
 
-4. **Set up the database**
-   Start MySQL using XAMPP or your preferred method.
-   Import the schema: mysql -u root -p talentmap < database/talentmap_schema.sql
+6. **Set up the database**
+   - Start MySQL using XAMPP or your preferred method.
+   - Import the schema:
+     ```bash
+     mysql -u root -p talentmap < database/talentmap_schema.sql
 
-5. **Run the application**
+7. **Run the application**
+   ```bash
    node app.js
    Visit http://localhost:3000 in your browser.
 
 📌 Notes
-  DOCX files are stored but not parsed for preview.
-  Agreement generation depends on consistent offer letter formatting.
-  Admin features and AI-based job matching are planned for future versions.
+  - DOCX files are stored but not parsed for preview.
+  - Agreement generation depends on consistent offer letter formatting.
+  - Admin features and AI-based job matching are planned for future versions.
 
 📄 License
   This project is for educational purposes as part of the Certificate in Software Development (MCSD51) at Future Skills Academy.
